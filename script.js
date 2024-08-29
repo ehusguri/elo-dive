@@ -1,31 +1,54 @@
 // script.js
 function rafflePlayers() {
-    const positions = ['Top', 'Jungle', 'Mid', 'ADC', 'Support'];
-    const champions = [
-        'Aatrox', 'Ahri', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Annie', 'Aphelios', 'Ashe',
-        'Aurelion Sol', 'Azir', 'Bard', 'Blitzcrank', 'Brand', 'Braum', 'Caitlyn', 'Camille',
-        'Cassiopeia', 'Cho\'Gath', 'Corki', 'Darius', 'Diana', 'Dr. Mundo', 'Draven', 'Ekko',
-        'Elise', 'Evelynn', 'Ezreal', 'Fiddlesticks', 'Fiora', 'Fizz', 'Galio', 'Gangplank',
-        'Garen', 'Gnar', 'Gragas', 'Graves', 'Gwen', 'Hecarim', 'Heimerdinger', 'Illaoi',
-        'Irelia', 'Ivern', 'Janna', 'Jarvan IV', 'Jax', 'Jayce', 'Jhin', 'Jinx', 'Kai\'Sa',
-        'Kalista', 'Karma', 'Karthus', 'Kassadin', 'Katarina', 'Kayle', 'Kayn', 'Kennen',
-        'Kha\'Zix', 'Kindred', 'Kled', 'Kog\'Maw', 'LeBlanc', 'Lee Sin', 'Leona', 'Lillia',
-        'Lissandra', 'Lucian', 'Lulu', 'Lux', 'Malphite', 'Malzahar', 'Maokai', 'Master Yi',
-        'Miss Fortune', 'Mordekaiser', 'Morgana', 'Nami', 'Nasus', 'Nautilus', 'Neeko', 'Nidalee',
-        'Nocturne', 'Nunu & Willump', 'Olaf', 'Orianna', 'Ornn', 'Pantheon', 'Poppy', 'Pyke',
-        'Qiyana', 'Quinn', 'Rakan', 'Rammus', 'Rek\'Sai', 'Rell', 'Renekton', 'Rengar',
-        'Riven', 'Rumble', 'Ryze', 'Samira', 'Sejuani', 'Senna', 'Seraphine', 'Sett', 'Shaco',
-        'Shen', 'Shyvana', 'Singed', 'Sion', 'Sivir', 'Skarner', 'Sona', 'Soraka', 'Swain',
-        'Sylas', 'Syndra', 'Tahm Kench', 'Taliyah', 'Talon', 'Taric', 'Teemo', 'Thresh', 'Tristana',
-        'Trundle', 'Tryndamere', 'Twisted Fate', 'Twitch', 'Udyr', 'Urgot', 'Varus', 'Vayne',
-        'Veigar', 'Vel\'Koz', 'Vi', 'Viego', 'Viktor', 'Vladimir', 'Volibear', 'Warwick', 'Wukong',
-        'Xayah', 'Xerath', 'Xin Zhao', 'Yasuo', 'Yone', 'Yorick', 'Yuumi', 'Zac', 'Zed', 'Ziggs',
-        'Zilean', 'Zoe', 'Zyra'
+    const positions = ['Top', 'Jungle', 'Mid', 'Adc', 'Suporte'];
+
+    const topChampions = ["Aatrox", "Aurora", "Camille", "Darius", "Fiora", "Garen", "Irelia",
+        "Jax", "Kled", "Renekton", "Riven", "Sett", "Tryndamere",
+        "Urgot", "Yasuo", "Yone", "Cho'Gath", "Dr. Mundo", "Gnar",
+        "Malphite", "Maokai", "Ornn", "Sion", "Shen", "Singed",
+        "Mordekaiser", "Rumble", "Sylas", "Teemo", "Vladimir",
+        "Akali", "Gangplank", "Jayce", "Kayle", "Quinn", "Rengar",
+        "Vayne", "Gwen", "Illaoi", "Kennen", "Nasus", "Pantheon", "Ryze", "Volibear", "Wukong", "Yorick"
+    ];
+
+    const jungleChampions = [
+        "Amumu", "Bel'Veth", "Diana", "Dr. Mundo", "Elise", "Evelynn", "Ekko",
+        "Fiddlesticks", "Gragas", "Graves", "Hecarim", "Ivern", "Jarvan IV",
+        "Jax", "Kayn", "Kha'Zix", "Kindred", "Lee Sin", "Lillia",
+        "Maokai", "Master Yi", "Nidalee", "Nocturne", "Nunu & Willump",
+        "Olaf", "Poppy", "Rammus", "Rek'Sai", "Rengar", "Sejuani",
+        "Shaco", "Shyvana", "Skarner", "Taliyah", "Trundle", "Udyr",
+        "Vi", "Viego", "Warwick", "Wukong", "Xin Zhao", "Zac", "Karthus", "Poppy", "Volibear"
+    ];
+
+    const midChampions = [
+        "Ahri", "Akali", "Aurora", "Anivia", "Annie", "Aurelion Sol", "Azir",
+        "Brand", "Cassiopeia", "Corki", "Diana", "Ekko", "Fizz", "Galio",
+        "Gragas", "Heimerdinger", "Irelia", "Kassadin", "Katarina",
+        "LeBlanc", "Lissandra", "Lux", "Malzahar", "Neeko", "Orianna",
+        "Qiyana", "Ryze", "Seraphine", "Sylas", "Syndra", "Taliyah",
+        "Talon", "Twisted Fate", "Veigar", "Vel'Koz", "Vex", "Viktor",
+        "Vladimir", "Xerath", "Yasuo", "Yone", "Zed", "Ziggs", "Zoe", "Karthus", "Pantheon"
+
+    ];
+
+    const adcChampions = [
+        "Aphelios", "Ashe", "Caitlyn", "Draven", "Ezreal", "Jhin",
+        "Jinx", "Kai'Sa", "Kalista", "Kog'Maw", "Lucian", "Miss Fortune",
+        "Samira", "Senna", "Sivir", "Tristana", "Twitch", "Varus",
+        "Vayne", "Xayah", "Zeri", "Karthus"
+    ];
+
+    const suportChampions = [
+        "Alistar", "Amumu", "Bard", "Brand", "Blitzcrank", "Braum", "Janna",
+        "Karma", "Leona", "Lulu", "Lux", "Morgana", "Nami",
+        "Nautilus", "Pyke", "Rakan", "Rell", "Renata Glasc",
+        "Seraphine", "Sona", "Soraka", "Swain", "Tahm Kench",
+        "Taric", "Thresh", "Yuumi", "Zilean", "Zyra"
     ];
 
     // Shuffle positions and champions
     shuffleArray(positions);
-    shuffleArray(champions);
 
     let names = [];
     for (let i = 1; i <= 5; i++) {
@@ -34,10 +57,36 @@ function rafflePlayers() {
 
     let resultsHTML = "";
     names.forEach((name, index) => {
-        resultsHTML += `<p>${name} - ${positions[index]} - ${champions[index]}</p>`;
+        
+        switch (positions[index]) {
+            case 'Top':
+                shuffleArray(topChampions);
+                resultsHTML += `<p>${name} - ${positions[index]} - ${topChampions[index]}</p>`;
+                break;
+
+            case 'Jungle':
+                shuffleArray(jungleChampions);
+                resultsHTML += `<p>${name} - ${positions[index]} - ${jungleChampions[index]}</p>`;
+
+                break;
+            case 'Mid':
+                shuffleArray(midChampions);
+                resultsHTML += `<p>${name} - ${positions[index]} - ${midChampions[index]}</p>`;
+                break;
+            case 'Adc':
+                shuffleArray(adcChampions);
+                resultsHTML += `<p>${name} - ${positions[index]} - ${adcChampions[index]}</p>`;
+                break;
+            case 'Suporte':
+                shuffleArray(suportChampions);
+                resultsHTML += `<p>${name} - ${positions[index]} - ${suportChampions[index]}</p>`;
+                break;
+
+        }
+
     });
 
-    document.getElementById('results').style.display="block";
+    document.getElementById('results').style.display = "block";
     document.getElementById('results').innerHTML = resultsHTML;
 }
 
