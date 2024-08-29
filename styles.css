@@ -1,0 +1,130 @@
+/* Importing Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+:root {
+    --dark-bg: #282c34;
+    --light-bg: #3a3f4b;
+    --accent-color: #61dafb;
+    --hover-color: #e06c75;
+    --text-light: #abb2bf;
+    --text-highlight: #98c379;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark-bg);
+    background-image: linear-gradient(to right, var(--dark-bg), var(--light-bg));
+    color: var(--text-light);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease-out;
+}
+
+h1 {
+    color: var(--hover-color);
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+#inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 2px solid var(--accent-color);
+    background-color: var(--light-bg);
+    color: var(--accent-color);
+    width: 220px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+    border-color: var(--hover-color);
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 4px;
+    color: var(--dark-bg);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: var(--hover-color);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#results {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: var(--light-bg);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#results p {
+    font-size: 16px;
+    color: var(--text-highlight);
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#results p:hover {
+    background-color: var(--dark-bg);
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    #inputs, #results {
+        width: 90%;
+    }
+
+    input {
+        width: calc(100% - 20px); /* Adjusting for padding */
+    }
+}
