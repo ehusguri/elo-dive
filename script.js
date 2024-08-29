@@ -37,6 +37,7 @@ function rafflePlayers() {
         resultsHTML += `<p>${name} - ${positions[index]} - ${champions[index]}</p>`;
     });
 
+    document.getElementById('results').style.display="block";
     document.getElementById('results').innerHTML = resultsHTML;
 }
 
