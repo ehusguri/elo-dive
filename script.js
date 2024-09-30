@@ -1,8 +1,7 @@
-// script.js
-function rafflePlayers() {
-    const positions = ['Top', 'Jungle', 'Mid', 'Adc', 'Suporte'];
+let originalTopChampions, originalJungleChampions, originalMidChampions, originalAdcChampions, originalSuportChampions;
 
-    const topChampions = ["Aatrox", "Aurora", "Camille", "Darius", "Fiora", "Garen", "Irelia",
+function initializeChampionLists() {
+    originalTopChampions = ["Aatrox", "Aurora", "Camille", "Darius", "Fiora", "Garen", "Irelia",
         "Jax", "Kled", "Renekton", "Riven", "Sett", "Tryndamere",
         "Urgot", "Yasuo", "Yone", "Cho'Gath", "Dr. Mundo", "Gnar",
         "Malphite", "Maokai", "Ornn", "Sion", "Shen", "Singed",
@@ -11,7 +10,7 @@ function rafflePlayers() {
         "Vayne", "Gwen", "Illaoi", "Kennen", "Nasus", "Pantheon", "Ryze", "Volibear", "Wukong", "Yorick"
     ];
 
-    const jungleChampions = [
+    originalJungleChampions = [
         "Amumu", "Bel'Veth", "Diana", "Dr. Mundo", "Elise", "Evelynn", "Ekko",
         "Fiddlesticks", "Gragas", "Graves", "Hecarim", "Ivern", "Jarvan IV",
         "Jax", "Kayn", "Kha'Zix", "Kindred", "Lee Sin", "Lillia",
@@ -21,7 +20,7 @@ function rafflePlayers() {
         "Vi", "Viego", "Warwick", "Wukong", "Xin Zhao", "Zac", "Karthus", "Poppy", "Volibear"
     ];
 
-    const midChampions = [
+    originalMidChampions = [
         "Ahri", "Akali", "Aurora", "Anivia", "Annie", "Aurelion Sol", "Azir",
         "Brand", "Cassiopeia", "Corki", "Diana", "Ekko", "Fizz", "Galio",
         "Gragas", "Heimerdinger", "Irelia", "Kassadin", "Katarina",
@@ -29,25 +28,32 @@ function rafflePlayers() {
         "Qiyana", "Ryze", "Seraphine", "Sylas", "Syndra", "Taliyah",
         "Talon", "Twisted Fate", "Veigar", "Vel'Koz", "Vex", "Viktor",
         "Vladimir", "Xerath", "Yasuo", "Yone", "Zed", "Ziggs", "Zoe", "Karthus", "Pantheon"
-
     ];
 
-    const adcChampions = [
+    originalAdcChampions = [
         "Aphelios", "Ashe", "Caitlyn", "Draven", "Ezreal", "Jhin",
         "Jinx", "Kai'Sa", "Kalista", "Kog'Maw", "Lucian", "Miss Fortune",
         "Samira", "Senna", "Sivir", "Tristana", "Twitch", "Varus",
         "Vayne", "Xayah", "Zeri", "Karthus"
     ];
 
-    const suportChampions = [
+    originalSuportChampions = [
         "Alistar", "Amumu", "Bard", "Brand", "Blitzcrank", "Braum", "Janna",
         "Karma", "Leona", "Lulu", "Lux", "Morgana", "Nami",
         "Nautilus", "Pyke", "Rakan", "Rell", "Renata Glasc",
         "Seraphine", "Sona", "Soraka", "Swain", "Tahm Kench",
         "Taric", "Thresh", "Yuumi", "Zilean", "Zyra"
     ];
+}
 
-    // Shuffle positions and champions
+function rafflePlayers() {
+    let topChampions = [...originalTopChampions];
+    let jungleChampions = [...originalJungleChampions];
+    let midChampions = [...originalMidChampions];
+    let adcChampions = [...originalAdcChampions];
+    let suportChampions = [...originalSuportChampions];
+
+    const positions = ['Top', 'Jungle', 'Mid', 'Adc', 'Suporte'];
     shuffleArray(positions);
 
     let names = [];
@@ -57,37 +63,46 @@ function rafflePlayers() {
 
     let resultsHTML = "";
     names.forEach((name, index) => {
-        
         switch (positions[index]) {
             case 'Top':
                 shuffleArray(topChampions);
-                resultsHTML += `<p>${name} - ${positions[index]} - ${topChampions[index]}</p>`;
+                const topChampion = topChampions.pop(); // Remove o campeão sorteado
+                resultsHTML += `<p>${name} - ${positions[index]} - ${topChampion}</p>`;
                 break;
 
             case 'Jungle':
                 shuffleArray(jungleChampions);
-                resultsHTML += `<p>${name} - ${positions[index]} - ${jungleChampions[index]}</p>`;
-
+                const jungleChampion = jungleChampions.pop();
+                resultsHTML += `<p>${name} - ${positions[index]} - ${jungleChampion}</p>`;
                 break;
+
             case 'Mid':
                 shuffleArray(midChampions);
-                resultsHTML += `<p>${name} - ${positions[index]} - ${midChampions[index]}</p>`;
+                const midChampion = midChampions.pop();
+                resultsHTML += `<p>${name} - ${positions[index]} - ${midChampion}</p>`;
                 break;
+
             case 'Adc':
                 shuffleArray(adcChampions);
-                resultsHTML += `<p>${name} - ${positions[index]} - ${adcChampions[index]}</p>`;
+                const adcChampion = adcChampions.pop();
+                resultsHTML += `<p>${name} - ${positions[index]} - ${adcChampion}</p>`;
                 break;
+
             case 'Suporte':
                 shuffleArray(suportChampions);
-                resultsHTML += `<p>${name} - ${positions[index]} - ${suportChampions[index]}</p>`;
+                const suportChampion = suportChampions.pop();
+                resultsHTML += `<p>${name} - ${positions[index]} - ${suportChampion}</p>`;
                 break;
-
         }
-
     });
 
     document.getElementById('results').style.display = "block";
     document.getElementById('results').innerHTML = resultsHTML;
+}
+
+function resetChampionLists() {
+    initializeChampionLists();
+    document.getElementById('results').innerHTML = "";
 }
 
 function shuffleArray(array) {
